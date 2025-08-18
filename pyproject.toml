@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "audora-audio-processor"
+version = "0.1.0"
+description = "Audio processing service with Celery, MinIO, and monitoring."
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "celery>=5.3",
+  "redis>=5.0",
+  "pydantic>=2.0",
+  "minio>=7.1",
+  "ffmpeg-python>=0.2.0",
+  "numpy",
+  "scipy",
+  "structlog",
+  "python-dotenv>=1.0.0",
+]
+[project.scripts]
+audora-processor = "app.main:cli"
+
+[project.optional-dependencies]
+dev = [
+  "pytest",
+  "pytest-cov",
+  "black",
+  "isort",
+  "flake8",
+]
+[tool.setuptools.packages.find]
+where = ["."]
+
